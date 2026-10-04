@@ -2,5 +2,22 @@
  "updated": "2026-10-04",
  "origin": "ICN",
  "currency": "KRW",
- "rows": []
+ "rows": [
+  {
+   "seen": "2026-10-04",
+   "dest": "KIX",
+   "name": "교토시",
+   "price": 304255,
+   "out": "2026-12-04",
+   "ret": "2026-12-07",
+   "airlines": [
+    "OZ"
+   ],
+   "stops": 0,
+   "dep": "16:40",
+   "arr": "18:30",
+   "google": "https://www.google.com/travel/flights?hl=ko&gl=kr&curr=KRW&tfs=CBwQAhoeEgoyMDI2LTEyLTA0agcIARIDSUNOcgcIARIDS0lYGh4SCjIwMjYtMTItMDdqBwgBEgNLSVhyBwgBEgNJQ05AAUgBYIC1GHABmAEB&tfu=EgIIAQ",
+   "sky": "https://www.skyscanner.co.kr/transport/flights/icn/kix/261204/261207/"
+  }
+ ]
 }
