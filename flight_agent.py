@@ -121,15 +121,30 @@ def pick_trip(s, today):
 
 
 # ---------- 파싱/필터 ----------
+def _walk(o, path=""):
+    """중첩 dict/list를 (키경로, 값)으로 펼친다."""
+    if isinstance(o, dict):
+        for k, v in o.items():
+            yield from _walk(v, f"{path}.{k}" if path else k)
+    elif isinstance(o, list):
+        for i, v in enumerate(o):
+            yield from _walk(v, f"{path}.{i}")
+    else:
+        yield path.lower(), o
+
+
 def explore_candidates(data, cfg):
     exclude = {c.upper() for c in cfg.get("exclude_destinations") or []}
     out = []
     for x in data.get("destinations", []):
-        fl = x.get("flight") or {}
-        code = x.get("airport_code") or fl.get("airport_code") or x.get("primary_airport")
-        price = to_int(x.get("flight_price") or x.get("price") or fl.get("price"))
-        if code and price and code.upper() not in exclude:
-            out.append((price, code.upper(), x.get("name", code)))
+        flat = list(_walk(x))
+        price = next((to_int(v) for k, v in flat if "price" in k and "cost_per" not in k and to_int(v)), None)
+        code = next((str(v).upper() for k, v in flat
+                     if ("airport" in k or k.endswith("code")) and "airline" not in k
+                     and isinstance(v, str) and len(v) == 3 and v.isalpha()), None)
+        name = x.get("name", code) if isinstance(x, dict) else code
+        if code and price and code not in exclude:
+            out.append((price, code, name))
     return sorted(out)
 
 
@@ -228,7 +243,12 @@ def main():
                 continue
             cands = explore_candidates(data, cfg)
             if not cands:
-                print("익스플로어 후보 없음. 응답 키:", list(data.keys()))
+                dl = data.get("destinations") or []
+                print(f"익스플로어 후보 없음. 응답 키: {list(data.keys())}, destinations {len(dl)}개")
+                if dl:
+                    print("첫 항목:", json.dumps(dl[0], ensure_ascii=False)[:700])
+                else:
+                    print("검색 조건:", json.dumps(data.get("search_parameters"), ensure_ascii=False)[:400])
         else:
             dests = [d.upper() for d in cfg["destinations"]]
             r = k % len(dests)
