@@ -1,0 +1,47 @@
+# ===== 항공권 에이전트 설정 (이 파일만 고치면 됩니다) =====
+origin: ICN
+currency: KRW
+max_price: 400000            # 왕복 총액 상한
+nonstop_only: false
+
+# 도착지: any = 어디든지(익스플로어) / 또는 [NRT, BKK, ...] 직접 지정
+destinations: any
+exclude_destinations: []     # 예: [HKG]
+target_prices: {}            # 도착지별 목표가. 예: {NRT: 250000}
+
+# ----- 항공사 (복수 선택, 그룹 이름/얼라이언스/개별 코드 혼용) -----
+# 비워두면([]) 항공사 제한 없음
+airlines:
+  - korean_fsc
+  - STAR_ALLIANCE
+
+airline_groups:              # 직접 묶음
+  korean_fsc: [KE, OZ]
+  korean_lcc: [7C, LJ, TW, BX, RS, ZE]
+  my_favs: [KE, SQ, NH]
+
+alliances:                   # 대략적인 목록. 필요하면 직접 수정
+  STAR_ALLIANCE: [OZ, SQ, NH, TG, LH, UA, AC, TK, TP, SK, LX, OS, SN, AI, CA, ET, MS, NZ, SA, LO, AV, BR, CM, OU]
+  SKYTEAM: [KE, DL, AF, KL, AZ, MU, CZ, VN, GA, CI, MF, KQ, AR, AM, RO, UX, SV, ME, VS]
+  ONEWORLD: [AA, BA, CX, JL, QF, QR, AY, IB, MH, RJ, AT, AS, FJ, UL]
+
+# ----- 시간대 (복수 선택) -----
+# night 00-06 / morning 06-12 / afternoon 12-18 / evening 18-24
+# 가는 편(출발 첫 구간 / 최종 도착) 기준. 비우면 제한 없음
+time_bands:
+  depart: [morning, afternoon]
+  arrive: [morning, afternoon, evening]
+
+# ----- 일정 (복수) -----
+# 매일 범위 안의 날짜와 체류일을 번갈아 조회해서 무료 한도 안에서 전체를 훑습니다
+schedules:
+  - depart: "2026-12-01..2026-12-15"
+    stay_days: [3, 4, 5]
+  - depart: "2027-01-10..2027-01-31"
+    stay_days: [5, 6, 7]
+
+# ----- 호출 한도 (SerpApi 무료: 월 250회) -----
+daily_call_limit: 8
+monthly_call_limit: 230
+detail_per_schedule: 3       # 일정 1개당 상세 조회할 후보 수
+notify_when_nothing: false   # 알릴 게 없을 때도 메시지를 받을지

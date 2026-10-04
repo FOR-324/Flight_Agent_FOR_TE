@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>인천발 항공권 최저가</title>
+<style>
+:root{--bg:#eef3f7;--panel:#fff;--ink:#0f2437;--sub:#5b6f82;--line:#cbd6e0;--go:#00806b;--low:#b87d00;--r:10px}
+@media(prefers-color-scheme:dark){:root{--bg:#0d1722;--panel:#14212e;--ink:#e6eef5;--sub:#8ea3b5;--line:#27384a;--go:#3ccfae;--low:#f0b429}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 Pretendard,"Apple SD Gothic Neo","Noto Sans KR",system-ui,sans-serif}
+header{padding:28px 20px 8px;max-width:1100px;margin:auto}
+h1{margin:0;font-size:26px;letter-spacing:-.02em}
+header p{margin:4px 0 0;color:var(--sub)}
+main{max-width:1100px;margin:auto;padding:16px 20px 48px;display:grid;grid-template-columns:260px 1fr;gap:20px}
+@media(max-width:800px){main{grid-template-columns:1fr}}
+aside{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:16px;align-self:start}
+fieldset{border:0;padding:0;margin:0 0 16px}
+legend{font-weight:600;margin-bottom:6px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips label{cursor:pointer}
+.chips input{position:absolute;opacity:0}
+.chips span{display:inline-block;padding:3px 10px;border:1px solid var(--line);border-radius:99px;font-size:13px}
+.chips input:checked+span{background:var(--go);border-color:var(--go);color:#fff}
+.chips input:focus-visible+span{outline:2px solid var(--ink);outline-offset:2px}
+select,input[type=range]{width:100%}
+select{padding:6px;border-radius:6px;border:1px solid var(--line);background:var(--bg);color:var(--ink)}
+button{padding:6px 12px;border-radius:6px;border:1px solid var(--line);background:none;color:var(--ink);cursor:pointer}
+.row{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:12px 16px;margin-bottom:10px;display:grid;grid-template-columns:1fr auto;gap:4px 16px}
+.row h3{margin:0;font-size:17px}
+.price{font-size:22px;font-weight:700;text-align:right}
+.meta{color:var(--sub);font-size:13px}
+.low{color:var(--low);font-weight:600}
+.links{text-align:right;font-size:13px}
+.links a{color:var(--go);margin-left:10px}
+svg{display:block}
+#count{margin:0 0 10px;color:var(--sub)}
+.empty{padding:40px;text-align:center;color:var(--sub)}
+</style>
+</head>
+<body>
+<header><h1>인천발 항공권 최저가</h1><p id="updated">불러오는 중…</p></header>
+<main>
+<aside>
+  <fieldset><legend>목적지</legend><div class="chips" id="f-dest"></div></fieldset>
+  <fieldset><legend>항공사</legend><div class="chips" id="f-air"></div></fieldset>
+  <fieldset><legend>출발 시간대</legend><div class="chips" id="f-dep"></div></fieldset>
+  <fieldset><legend>도착 시간대</legend><div class="chips" id="f-arr"></div></fieldset>
+  <fieldset><legend>경유</legend><div class="chips" id="f-stop"></div></fieldset>
+  <fieldset><legend>출발 월</legend><div class="chips" id="f-month"></div></fieldset>
+  <fieldset><legend>최대 가격 <b id="pv"></b></legend><input type="range" id="price"></fieldset>
+  <fieldset><legend>정렬</legend>
+    <select id="sort"><option value="price">최저가순</option><option value="seen">최신 조회순</option><option value="drop">가격 하락폭순</option></select></fieldset>
+  <button id="reset">필터 초기화</button>
+</aside>
+<section><p id="count"></p><div id="list"></div></section>
+</main>
+<script>
+const BANDS={night:[0,6,"새벽 0–6"],morning:[6,12,"오전 6–12"],afternoon:[12,18,"오후 12–18"],evening:[18,24,"저녁 18–24"]};
+const $=id=>document.getElementById(id);
+let rows=[],sel={dest:new Set(),air:new Set(),dep:new Set(),arr:new Set(),stop:new Set(),month:new Set()};
+const won=n=>n.toLocaleString("ko-KR")+"원";
+const band=t=>{const h=+t.slice(0,2);return Object.keys(BANDS).find(k=>h>=BANDS[k][0]&&h<BANDS[k][1])};
+const stopKey=r=>r.stops===0?"직항":"경유";
+const fd=s=>{const d=new Date(s);return `${d.getMonth()+1}/${d.getDate()}(${"일월화수목금토"[d.getDay()]})`};
+
+function chips(id,key,opts){
+  $(id).innerHTML=opts.map(([v,l])=>`<label><input type="checkbox" value="${v}"><span>${l}</span></label>`).join("");
+  $(id).onchange=e=>{const s=sel[key];e.target.checked?s.add(e.target.value):s.delete(e.target.value);render()};
+}
+function pass(r){
+  const m=(k,v)=>!sel[k].size||sel[k].has(v);
+  return m("dest",r.dest)&&m("dep",band(r.dep))&&m("arr",band(r.arr))&&m("stop",stopKey(r))&&m("month",r.out.slice(0,7))
+    &&(!sel.air.size||r.airlines.some(a=>sel.air.has(a)))&&r.price<=+$("price").value;
+}
+// 같은 목적지·같은 출발일 조합의 직전 조회 대비 변화
+function drop(r){
+  const prev=rows.filter(x=>x.dest===r.dest&&x.out===r.out&&x.ret===r.ret&&x.seen<r.seen).sort((a,b)=>b.seen.localeCompare(a.seen))[0];
+  return prev?prev.price-r.price:0;
+}
+function spark(code){
+  const pts=rows.filter(r=>r.dest===code).sort((a,b)=>a.seen.localeCompare(b.seen)).map(r=>r.price);
+  if(pts.length<2)return "";
+  const lo=Math.min(...pts),hi=Math.max(...pts),w=90,h=26;
+  const d=pts.map((p,i)=>`${i?"L":"M"}${(i/(pts.length-1)*w).toFixed(1)},${(h-2-(hi===lo?.5:(p-lo)/(hi-lo))*(h-4)).toFixed(1)}`).join("");
+  return `<svg width="${w}" height="${h}" role="img" aria-label="${code} 가격 추이"><path d="${d}" fill="none" stroke="var(--go)" stroke-width="2"/></svg>`;
+}
+function render(){
+  const minByDest={};rows.forEach(r=>minByDest[r.dest]=Math.min(minByDest[r.dest]??1e12,r.price));
+  let out=rows.filter(pass);
+  const s=$("sort").value;
+  out.sort(s==="price"?(a,b)=>a.price-b.price:s==="seen"?(a,b)=>b.seen.localeCompare(a.seen)||a.price-b.price:(a,b)=>drop(b)-drop(a));
+  $("pv").textContent=won(+$("price").value);
+  $("count").textContent=`${out.length}건`;
+  $("list").innerHTML=out.length?out.slice(0,200).map(r=>{
+    const dr=drop(r);
+    return `<div class="row"><h3>${r.name} (${r.dest})</h3><div class="price">${won(r.price)}</div>
+    <div class="meta">${fd(r.out)} → ${fd(r.ret)} · ${r.airlines.join("/")} · ${r.stops===0?"직항":"경유 "+r.stops+"회"} · 가는 편 ${r.dep}→${r.arr}<br>
+    조회 ${r.seen}${r.price===minByDest[r.dest]?' · <span class="low">이 목적지 기록 최저가</span>':""}${dr>0?` · <span class="low">직전보다 ${won(dr)} 하락</span>`:""}</div>
+    <div class="links">${spark(r.dest)}<a href="${r.google||"#"}" target="_blank" rel="noopener">구글</a><a href="${r.sky}" target="_blank" rel="noopener">스카이스캐너</a></div></div>`}).join("")
+    :'<div class="empty">조건에 맞는 항공권이 없어요. 필터를 줄여보세요.</div>';
+}
+fetch("results.json",{cache:"no-store"}).then(r=>r.json()).then(d=>{
+  rows=d.rows;$("updated").textContent=`마지막 업데이트 ${d.updated} · 매일 자동 갱신`;
+  const uniq=f=>[...new Set(rows.flatMap(f))].sort();
+  chips("f-dest","dest",uniq(r=>[r.dest]).map(c=>[c,rows.find(r=>r.dest===c).name]));
+  chips("f-air","air",uniq(r=>r.airlines).map(a=>[a,a]));
+  chips("f-dep","dep",Object.entries(BANDS).map(([k,v])=>[k,v[2]]));
+  chips("f-arr","arr",Object.entries(BANDS).map(([k,v])=>[k,v[2]]));
+  chips("f-stop","stop",[["직항","직항"],["경유","경유"]]);
+  chips("f-month","month",uniq(r=>[r.out.slice(0,7)]).map(m=>[m,m]));
+  const ps=rows.map(r=>r.price),p=$("price");
+  p.min=Math.min(...ps,0);p.max=Math.max(...ps,1);p.step=10000;p.value=p.max;p.oninput=render;
+  $("sort").onchange=render;
+  $("reset").onclick=()=>{Object.values(sel).forEach(s=>s.clear());document.querySelectorAll("aside input[type=checkbox]").forEach(i=>i.checked=false);p.value=p.max;render()};
+  render();
+}).catch(()=>{$("updated").textContent="데이터를 불러오지 못했어요. 첫 실행 전이면 results.json이 아직 없을 수 있어요."});
+</script>
+</body>
+</html>
