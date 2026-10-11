@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-11",
+ "updated": "2026-10-12",
  "origin": "ICN",
  "currency": "KRW",
  "rows": [
@@ -258,6 +258,54 @@
    "arr": "18:30",
    "google": "https://www.google.com/travel/flights?hl=ko&gl=kr&curr=KRW&tfs=CBwQAhoeEgoyMDI3LTAxLTI4agcIARIDSUNOcgcIARIDS0lYGh4SCjIwMjctMDItMDNqBwgBEgNLSVhyBwgBEgNJQ05AAUgBYIC1GHABmAEB&tfu=EgIIAQ",
    "sky": "https://www.skyscanner.co.kr/transport/flights/icn/kix/270128/270203/"
+  },
+  {
+   "seen": "2026-10-12",
+   "dest": "KIX",
+   "name": "오사카시",
+   "price": 379300,
+   "out": "2026-12-12",
+   "ret": "2026-12-15",
+   "airlines": [
+    "OZ"
+   ],
+   "stops": 0,
+   "dep": "16:40",
+   "arr": "18:30",
+   "google": "https://www.google.com/travel/flights?hl=ko&gl=kr&curr=KRW&tfs=CBwQAhoeEgoyMDI2LTEyLTEyagcIARIDSUNOcgcIARIDS0lYGh4SCjIwMjYtMTItMTVqBwgBEgNLSVhyBwgBEgNJQ05AAUgBYIC1GHABmAEB&tfu=EgIIAQ",
+   "sky": "https://www.skyscanner.co.kr/transport/flights/icn/kix/261212/261215/"
+  },
+  {
+   "seen": "2026-10-12",
+   "dest": "KIX",
+   "name": "오사카시",
+   "price": 348462,
+   "out": "2027-01-29",
+   "ret": "2027-02-04",
+   "airlines": [
+    "OZ"
+   ],
+   "stops": 0,
+   "dep": "16:40",
+   "arr": "18:30",
+   "google": "https://www.google.com/travel/flights?hl=ko&gl=kr&curr=KRW&tfs=CBwQAhoeEgoyMDI3LTAxLTI5agcIARIDSUNOcgcIARIDS0lYGh4SCjIwMjctMDItMDRqBwgBEgNLSVhyBwgBEgNJQ05AAUgBYIC1GHABmAEB&tfu=EgIIAQ",
+   "sky": "https://www.skyscanner.co.kr/transport/flights/icn/kix/270129/270204/"
+  },
+  {
+   "seen": "2026-10-12",
+   "dest": "HIJ",
+   "name": "히로시마시",
+   "price": 330900,
+   "out": "2027-01-29",
+   "ret": "2027-02-04",
+   "airlines": [
+    "KE"
+   ],
+   "stops": 0,
+   "dep": "10:35",
+   "arr": "12:15",
+   "google": "https://www.google.com/travel/flights?hl=ko&gl=kr&curr=KRW&tfs=CBwQAhoeEgoyMDI3LTAxLTI5agcIARIDSUNOcgcIARIDSElKGh4SCjIwMjctMDItMDRqBwgBEgNISUpyBwgBEgNJQ05AAUgBYIC1GHABmAEB&tfu=EgIIAQ",
+   "sky": "https://www.skyscanner.co.kr/transport/flights/icn/hij/270129/270204/"
   }
  ]
 }
