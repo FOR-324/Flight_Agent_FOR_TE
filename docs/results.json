@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-20",
+ "updated": "2026-10-21",
  "origin": "ICN",
  "currency": "KRW",
  "rows": [
@@ -498,6 +498,22 @@
    "arr": "18:30",
    "google": "https://www.google.com/travel/flights?hl=ko&gl=kr&curr=KRW&tfs=CBwQAhoeEgoyMDI2LTEyLTA1agcIARIDSUNOcgcIARIDS0lYGh4SCjIwMjYtMTItMDlqBwgBEgNLSVhyBwgBEgNJQ05AAUgBYIC1GHABmAEB&tfu=EgIIAQ",
    "sky": "https://www.skyscanner.co.kr/transport/flights/icn/kix/261205/261209/"
+  },
+  {
+   "seen": "2026-10-21",
+   "dest": "KIX",
+   "name": "교토시",
+   "price": 333700,
+   "out": "2026-12-06",
+   "ret": "2026-12-10",
+   "airlines": [
+    "OZ"
+   ],
+   "stops": 0,
+   "dep": "07:20",
+   "arr": "09:15",
+   "google": "https://www.google.com/travel/flights?hl=ko&gl=kr&curr=KRW&tfs=CBwQAhoeEgoyMDI2LTEyLTA2agcIARIDSUNOcgcIARIDS0lYGh4SCjIwMjYtMTItMTBqBwgBEgNLSVhyBwgBEgNJQ05AAUgBYIC1GHABmAEB&tfu=EgIIAQ",
+   "sky": "https://www.skyscanner.co.kr/transport/flights/icn/kix/261206/261210/"
   }
  ]
 }
