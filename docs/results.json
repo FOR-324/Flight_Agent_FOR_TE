@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-25",
+ "updated": "2026-10-26",
  "origin": "ICN",
  "currency": "KRW",
  "rows": [
@@ -594,6 +594,22 @@
    "arr": "18:30",
    "google": "https://www.google.com/travel/flights?hl=ko&gl=kr&curr=KRW&tfs=CBwQAhoeEgoyMDI3LTAxLTIwagcIARIDSUNOcgcIARIDS0lYGh4SCjIwMjctMDEtMjdqBwgBEgNLSVhyBwgBEgNJQ05AAUgBYIC1GHABmAEB&tfu=EgIIAQ",
    "sky": "https://www.skyscanner.co.kr/transport/flights/icn/kix/270120/270127/"
+  },
+  {
+   "seen": "2026-10-26",
+   "dest": "HIJ",
+   "name": "히로시마시",
+   "price": 355700,
+   "out": "2027-01-21",
+   "ret": "2027-01-28",
+   "airlines": [
+    "KE"
+   ],
+   "stops": 0,
+   "dep": "10:35",
+   "arr": "12:15",
+   "google": "https://www.google.com/travel/flights?hl=ko&gl=kr&curr=KRW&tfs=CBwQAhoeEgoyMDI3LTAxLTIxagcIARIDSUNOcgcIARIDSElKGh4SCjIwMjctMDEtMjhqBwgBEgNISUpyBwgBEgNJQ05AAUgBYIC1GHABmAEB&tfu=EgIIAQ",
+   "sky": "https://www.skyscanner.co.kr/transport/flights/icn/hij/270121/270128/"
   }
  ]
 }
