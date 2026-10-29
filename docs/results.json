@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-29",
+ "updated": "2026-10-30",
  "origin": "ICN",
  "currency": "KRW",
  "rows": [
@@ -642,6 +642,70 @@
    "arr": "09:45",
    "google": "https://www.google.com/travel/flights?hl=ko&gl=kr&curr=KRW&tfs=CBwQAhoeEgoyMDI3LTAxLTIzagcIARIDSUNOcgcIARIDUEVLGh4SCjIwMjctMDEtMzBqBwgBEgNQRUtyBwgBEgNJQ05AAUgBYIC1GHABmAEB&tfu=EgIIAQ",
    "sky": "https://www.skyscanner.co.kr/transport/flights/icn/pek/270123/270130/"
+  },
+  {
+   "seen": "2026-10-30",
+   "dest": "KIX",
+   "name": "오사카시",
+   "price": 369300,
+   "out": "2026-12-15",
+   "ret": "2026-12-19",
+   "airlines": [
+    "OZ"
+   ],
+   "stops": 0,
+   "dep": "07:20",
+   "arr": "09:15",
+   "google": "https://www.google.com/travel/flights?hl=ko&gl=kr&curr=KRW&tfs=CBwQAhoeEgoyMDI2LTEyLTE1agcIARIDSUNOcgcIARIDS0lYGh4SCjIwMjYtMTItMTlqBwgBEgNLSVhyBwgBEgNJQ05AAUgBYIC1GHABmAEB&tfu=EgIIAQ",
+   "sky": "https://www.skyscanner.co.kr/transport/flights/icn/kix/261215/261219/"
+  },
+  {
+   "seen": "2026-10-30",
+   "dest": "HIJ",
+   "name": "히로시마시",
+   "price": 380900,
+   "out": "2027-01-25",
+   "ret": "2027-02-01",
+   "airlines": [
+    "KE"
+   ],
+   "stops": 0,
+   "dep": "10:35",
+   "arr": "12:15",
+   "google": "https://www.google.com/travel/flights?hl=ko&gl=kr&curr=KRW&tfs=CBwQAhoeEgoyMDI3LTAxLTI1agcIARIDSUNOcgcIARIDSElKGh4SCjIwMjctMDItMDFqBwgBEgNISUpyBwgBEgNJQ05AAUgBYIC1GHABmAEB&tfu=EgIIAQ",
+   "sky": "https://www.skyscanner.co.kr/transport/flights/icn/hij/270125/270201/"
+  },
+  {
+   "seen": "2026-10-30",
+   "dest": "KIX",
+   "name": "오사카시",
+   "price": 384527,
+   "out": "2027-01-25",
+   "ret": "2027-02-01",
+   "airlines": [
+    "OZ"
+   ],
+   "stops": 0,
+   "dep": "16:40",
+   "arr": "18:30",
+   "google": "https://www.google.com/travel/flights?hl=ko&gl=kr&curr=KRW&tfs=CBwQAhoeEgoyMDI3LTAxLTI1agcIARIDSUNOcgcIARIDS0lYGh4SCjIwMjctMDItMDFqBwgBEgNLSVhyBwgBEgNJQ05AAUgBYIC1GHABmAEB&tfu=EgIIAQ",
+   "sky": "https://www.skyscanner.co.kr/transport/flights/icn/kix/270125/270201/"
+  },
+  {
+   "seen": "2026-10-30",
+   "dest": "PEK",
+   "name": "베이징",
+   "price": 336000,
+   "out": "2027-01-25",
+   "ret": "2027-02-01",
+   "airlines": [
+    "OZ"
+   ],
+   "stops": 0,
+   "dep": "08:20",
+   "arr": "09:45",
+   "google": "https://www.google.com/travel/flights?hl=ko&gl=kr&curr=KRW&tfs=CBwQAhoeEgoyMDI3LTAxLTI1agcIARIDSUNOcgcIARIDUEVLGh4SCjIwMjctMDItMDFqBwgBEgNQRUtyBwgBEgNJQ05AAUgBYIC1GHABmAEB&tfu=EgIIAQ",
+   "sky": "https://www.skyscanner.co.kr/transport/flights/icn/pek/270125/270201/"
   }
  ]
 }
