@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-04",
+ "updated": "2026-11-05",
  "origin": "ICN",
  "currency": "KRW",
  "rows": [
@@ -818,6 +818,38 @@
    "arr": "18:30",
    "google": "https://www.google.com/travel/flights?hl=ko&gl=kr&curr=KRW&tfs=CBwQAhoeEgoyMDI3LTAxLTMwagcIARIDSUNOcgcIARIDS0lYGh4SCjIwMjctMDItMDZqBwgBEgNLSVhyBwgBEgNJQ05AAUgBYIC1GHABmAEB&tfu=EgIIAQ",
    "sky": "https://www.skyscanner.co.kr/transport/flights/icn/kix/270130/270206/"
+  },
+  {
+   "seen": "2026-11-05",
+   "dest": "KIX",
+   "name": "오사카시",
+   "price": 396819,
+   "out": "2027-01-31",
+   "ret": "2027-02-07",
+   "airlines": [
+    "OZ"
+   ],
+   "stops": 0,
+   "dep": "16:40",
+   "arr": "18:30",
+   "google": "https://www.google.com/travel/flights?hl=ko&gl=kr&curr=KRW&tfs=CBwQAhoeEgoyMDI3LTAxLTMxagcIARIDSUNOcgcIARIDS0lYGh4SCjIwMjctMDItMDdqBwgBEgNLSVhyBwgBEgNJQ05AAUgBYIC1GHABmAEB&tfu=EgIIAQ",
+   "sky": "https://www.skyscanner.co.kr/transport/flights/icn/kix/270131/270207/"
+  },
+  {
+   "seen": "2026-11-05",
+   "dest": "PEK",
+   "name": "베이징",
+   "price": 361600,
+   "out": "2027-01-31",
+   "ret": "2027-02-07",
+   "airlines": [
+    "OZ"
+   ],
+   "stops": 0,
+   "dep": "08:20",
+   "arr": "09:45",
+   "google": "https://www.google.com/travel/flights?hl=ko&gl=kr&curr=KRW&tfs=CBwQAhoeEgoyMDI3LTAxLTMxagcIARIDSUNOcgcIARIDUEVLGh4SCjIwMjctMDItMDdqBwgBEgNQRUtyBwgBEgNJQ05AAUgBYIC1GHABmAEB&tfu=EgIIAQ",
+   "sky": "https://www.skyscanner.co.kr/transport/flights/icn/pek/270131/270207/"
   }
  ]
 }
